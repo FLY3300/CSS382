@@ -87,6 +87,24 @@ def depthFirstSearch(problem):
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
     "*** YOUR CODE HERE ***"
+
+    edge = util.Stack()
+    edge.push((problem.getStartState(), []))
+
+    # set to store visited node
+    visited = set()
+
+    while not edge.isEmpty():
+        node, moves = edge.pop()
+        if (problem.isGoalState(node)):
+            return moves
+        
+        visited.add(node)
+        #only get successor, action ignore stepCost
+        for node2, move, _ in problem.getSuccessors(node):
+            if (node2 not in visited):
+                edge.push((node2, moves + [move]))
+                
     util.raiseNotDefined()
 
 def breadthFirstSearch(problem):
