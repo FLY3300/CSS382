@@ -103,6 +103,7 @@ def depthFirstSearch(problem):
         #only get successor, action ignore stepCost
         for node2, move, _ in problem.getSuccessors(node):
             if (node2 not in visited):
+                #print(node2)
                 stack.push((node2, moves + [move]))
                 
     util.raiseNotDefined()
